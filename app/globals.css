@@ -1,0 +1,554 @@
+/* Stock Yield Tracker Styles */
+
+/* General Styles */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f0f2f5; /* Changed from #f8f9fa to a slightly darker gray */
+  color: #2c3e50;
+}
+
+/* Ensure all elements use Poppins font */
+* {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Global link styles */
+a {
+  color: #666666;
+  text-decoration: underline;
+}
+
+/* Enhanced Table Readability */
+#stock-table {
+  font-size: 0.85rem;
+  width: 100%;
+  table-layout: fixed; /* Fixed layout helps with column width control */
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+#stock-table th {
+  background-color: #34495e;
+  color: white;
+  border-bottom: none;
+  text-align: center;
+  vertical-align: middle;
+  font-weight: 500;
+  padding: 8px 4px; /* Reduced horizontal padding */
+  font-size: 0.85rem;
+  white-space: normal; /* Allow text to wrap */
+  height: 45px; /* Slightly reduced height */
+  line-height: 1.2;
+  hyphens: auto; /* Enable hyphenation for better wrapping */
+  word-break: break-word;
+}
+
+#stock-table td {
+  padding: 12px 6px; /* Reduced horizontal padding */
+  vertical-align: middle;
+  word-wrap: break-word; /* Allow text to break to prevent overflow */
+  overflow: hidden;
+  text-align: center; /* Center align all cells */
+  border-bottom: 1px solid #ecf0f1;
+}
+
+/* Table striping */
+#stock-table tbody tr:nth-of-type(odd) {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+#stock-table tbody tr:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+/* Stock symbol and name formatting */
+.stock-symbol {
+  font-weight: bold;
+  font-size: 0.9rem;
+  display: block;
+}
+
+.stock-name {
+  font-size: 0.75rem;
+  color: #7f8c8d;
+  display: block;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Make dividend history left-aligned */
+#stock-table td:nth-child(7) {
+  text-align: left;
+}
+
+/* Column width management */
+#stock-table th:nth-child(1), #stock-table td:nth-child(1) { width: 10%; } /* Symbol */
+#stock-table th:nth-child(2), #stock-table td:nth-child(2) { width: 8%; } /* Price */
+#stock-table th:nth-child(3), #stock-table td:nth-child(3) { width: 8%; } /* Change */
+#stock-table th:nth-child(4), #stock-table td:nth-child(4) { width: 8%; } /* Yield */
+#stock-table th:nth-child(5), #stock-table td:nth-child(5) { width: 8%; } /* Market Cap */
+#stock-table th:nth-child(6), #stock-table td:nth-child(6) { width: 8%; } /* Frequency */
+#stock-table th:nth-child(7), #stock-table td:nth-child(7) { width: 15%; } /* Dividend History */
+#stock-table th:nth-child(8), #stock-table td:nth-child(8) { width: 20%; } /* Opinion */
+#stock-table th:nth-child(9), #stock-table td:nth-child(9) { width: 7%; } /* Source */
+#stock-table th:nth-child(10), #stock-table td:nth-child(10) { width: 8%; } /* Actions */
+
+/* Resource links styling */
+.resource-links {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+}
+
+.resource-link {
+  font-size: 0.8rem;
+  color: #666666;
+  text-decoration: underline;
+  display: block;
+}
+
+.resource-link:hover {
+  text-decoration: underline;
+  color: #444444;
+}
+
+/* Algorithmic insight styling */
+#stock-table td:nth-child(8) {
+  font-size: 0.75rem;
+  line-height: 1.2;
+  max-height: 120px;
+  overflow-y: auto;
+  text-align: left;
+}
+
+/* Make source and action columns compact */
+#stock-table td:nth-last-child(-n+2) {
+  white-space: nowrap;
+  width: 1%;
+}
+
+/* Header Styles */
+header h1 {
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+#last-updated {
+  color: #7f8c8d;
+  font-size: 0.9rem;
+}
+
+/* Sort arrow styling */
+.sort-arrow {
+  cursor: pointer;
+  user-select: none;
+  padding: 0 2px; /* Reduced padding */
+  color: rgba(255, 255, 255, 0.7);
+  transition: color 0.2s ease;
+  display: inline-block;
+}
+
+.sort-arrow:hover {
+  color: white;
+}
+
+/* System Message */
+#system-message {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px 30px;
+  border-radius: 8px;
+  background-color: rgba(40, 167, 69, 0.9); /* Green background color */
+  color: white;
+  z-index: 1100; /* Higher z-index to ensure it floats on top */
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  min-width: 200px;
+  text-align: center;
+  backdrop-filter: blur(5px);
+  font-weight: 500;
+  font-family: 'Poppins', sans-serif !important;
+}
+
+/* Dividend History Styles */
+.dividend-history {
+  max-height: 120px;
+  overflow-y: auto;
+  font-size: 0.75rem;
+  padding: 6px;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+  border: 1px solid #ecf0f1;
+  line-height: 1.3;
+  text-align: left;
+}
+
+.dividend-chart-container {
+  height: 150px;
+  margin-top: 10px;
+}
+
+/* Positive/Negative Change Indicators */
+.trending-up, .positive-change {
+  color: #27ae60;
+  font-weight: 500;
+}
+
+.trending-down, .negative-change {
+  color: #e74c3c;
+  font-weight: 500;
+}
+
+.high-yield {
+  font-weight: 600;
+  color: #d35400;
+}
+
+/* Button Styles - Consolidated */
+.btn, 
+button[type="submit"],
+button[type="button"],
+.btn-primary,
+.btn-secondary,
+.btn-danger,
+.btn-success,
+.btn-warning,
+.btn-info,
+.delete-stock {
+  /* Base Button Properties */
+  padding: 4px 8px !important;
+  font-weight: 500;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  font-family: 'Poppins', sans-serif !important;
+  font-size: 0.8rem;
+  margin: 0.25rem 0.25rem;
+  height: auto;
+  display: inline-flex;
+  align-items: center;
+  line-height: 1.2;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* Add specific styling for icons */
+.btn i, button i {
+  margin-right: 4px;
+  line-height: 1;
+}
+
+/* Custom Button Colors */
+.btn-primary {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #0b5ed7;
+  border-color: #0b5ed7;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.btn-secondary, .btn-success, .btn-warning, .btn-info {
+  background-color: #6c757d;
+  border-color: #6c757d;
+  color: white;
+}
+
+.btn-secondary:hover, .btn-success:hover, .btn-warning:hover, .btn-info:hover {
+  background-color: #5c636a;
+  border-color: #5c636a;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  color: white;
+}
+
+.btn-danger, .delete-stock {
+  background-color: #dc3545;
+  border-color: #dc3545;
+  color: white;
+}
+
+.btn-danger:hover, .delete-stock:hover {
+  background-color: #bb2d3b;
+  border-color: #bb2d3b;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Modal Styles */
+.modal-content {
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  font-family: 'Poppins', sans-serif !important;
+}
+
+.modal-header {
+  background-color: #34495e;
+  color: white;
+  border-radius: 8px 8px 0 0;
+  padding: 15px 20px;
+}
+
+.modal-title {
+  font-weight: 500;
+  color: white;
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+.modal-footer {
+  padding: 15px 20px;
+  border-top: 1px solid #ecf0f1;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 992px) {
+  #stock-table {
+    table-layout: auto; /* Revert to auto layout for mobile scrolling */
+    min-width: 800px;
+    font-size: 0.8rem;
+  }
+  
+  .table-responsive {
+    overflow-x: auto;
+  }
+  
+  #stock-table th,
+  #stock-table td {
+    padding: 6px 4px;
+  }
+  
+  #stock-table th {
+    height: auto; /* Allow height to adjust on mobile */
+    min-height: 35px;
+    font-size: 0.7rem;
+  }
+  
+  .dividend-history {
+    max-height: 100px;
+    font-size: 0.7rem;
+  }
+  
+  /* Stack buttons on mobile */
+  .action-buttons .btn {
+    margin-bottom: 8px;
+    display: block;
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  #stock-table {
+    font-size: 0.8rem;
+  }
+  
+  #stock-table th {
+    padding: 6px 3px;
+    height: auto;
+    min-height: 30px;
+    font-size: 0.7rem;
+  }
+  
+  #stock-table td {
+    padding: 8px 4px;
+  }
+  
+  /* Progress bar mobile styling */
+  .progress {
+    height: 15px;
+  }
+}
+
+@media (max-width: 576px) {
+  .action-buttons {
+    flex-direction: column;
+  }
+  
+  header h1 {
+    font-size: 1.5rem;
+  }
+  
+  /* Progress bar small screen styling */
+  .progress {
+    height: 12px;
+  }
+}
+
+/* Medium width screens */
+@media (min-width: 769px) and (max-width: 1200px) {
+  #stock-table th {
+    padding: 6px 4px;
+    font-size: 0.75rem;
+    height: auto;
+    min-height: 35px;
+  }
+  
+  .sort-arrow {
+    display: block;
+    margin: 2px auto 0;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .no-print, .print-hidden {
+    display: none !important;
+  }
+  
+  body {
+    background-color: white;
+    padding: 0 !important;
+    margin: 0 !important;
+    font-family: 'Poppins', sans-serif !important;
+    width: 100% !important;
+  }
+  
+  .container-fluid {
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+    overflow: visible !important;
+    left: 0 !important;
+  }
+  
+  .row {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  .col, .col-12, .col-md-12, .col-lg-12 {
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  
+  header {
+    text-align: center;
+    margin-bottom: 0.5cm;
+    padding: 0;
+    width: 100%;
+  }
+  
+  header h1 {
+    font-size: 16pt;
+    margin-bottom: 0.2cm;
+  }
+  
+  #last-updated {
+    font-size: 8pt;
+  }
+  
+  .table-responsive {
+    overflow: visible !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  
+  #stock-table {
+    width: 100% !important;
+    max-width: 100% !important;
+    table-layout: fixed;
+    font-size: 7pt;
+    margin: 0 !important;
+    padding: 0 !important;
+    border-collapse: collapse !important;
+    color: black !important;
+    page-break-inside: auto;
+  }
+  
+  #stock-table th, #stock-table td {
+    border: 0.5pt solid #000 !important;
+    padding: 2pt !important;
+    background-color: transparent !important;
+    color: black !important;
+    font-weight: normal;
+    word-wrap: break-word;
+    overflow: hidden;
+    white-space: normal;
+  }
+  
+  #stock-table th {
+    font-weight: bold;
+    background-color: #f0f0f0 !important;
+    color: black !important;
+    height: auto !important;
+  }
+  
+  /* Print-specific column widths - adjusted for better space usage */
+  #stock-table th:nth-child(1), #stock-table td:nth-child(1) { width: 13%; } /* Symbol */
+  #stock-table th:nth-child(2), #stock-table td:nth-child(2) { width: 9%; } /* Price */
+  #stock-table th:nth-child(3), #stock-table td:nth-child(3) { width: 9%; } /* Change */
+  #stock-table th:nth-child(4), #stock-table td:nth-child(4) { width: 9%; } /* Yield */
+  #stock-table th:nth-child(5), #stock-table td:nth-child(5) { width: 9%; } /* Market Cap */
+  #stock-table th:nth-child(6), #stock-table td:nth-child(6) { width: 10%; } /* Frequency */
+  #stock-table th:nth-child(7), #stock-table td:nth-child(7) { width: 18%; } /* Dividend History */
+  #stock-table th:nth-child(8), #stock-table td:nth-child(8) { width: 23%; } /* Opinion */
+  #stock-table th:nth-child(9) { display: none; } /* Hide Sources header */
+  #stock-table td:nth-child(9) { display: none; } /* Hide Sources column */
+  #stock-table th:nth-child(10) { display: none; } /* Hide Actions header */
+  #stock-table td:nth-child(10) { display: none; } /* Hide Actions column */
+  
+  .trending-up, .trending-down, .high-yield, .positive-change, .negative-change {
+    color: #000 !important;
+  }
+  
+  /* Make all overflow visible for printing */
+  .dividend-history {
+    max-height: none !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    border: none !important;
+    background: none !important;
+    font-size: inherit !important;
+  }
+  
+  /* Set page properties */
+  @page {
+    size: landscape;
+    margin: 0.25cm;
+  }
+  
+  /* Ensure no left overflow */
+  main {
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  
+  /* Force all content to fit width */
+  * {
+    box-sizing: border-box !important;
+    max-width: 100% !important;
+  }
+}
+
+/* Progress Bar Styling */
+.progress {
+  height: 20px;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.progress-bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  transition: width 0.3s ease;
+} 
