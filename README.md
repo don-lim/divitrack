@@ -87,7 +87,7 @@ This application can be deployed to cPanel shared hosting environments.
 - **Frontend**: React, Next.js, Chart.js, Bootstrap
 - **Backend**: Next.js API Routes
 - **Data Source**: Yahoo Finance API
-- **Storage**: File-based caching
+- **Storage**: Local storage
 
 ## License
 
